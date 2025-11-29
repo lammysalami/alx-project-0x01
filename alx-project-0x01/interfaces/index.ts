@@ -23,29 +23,36 @@ export interface PostModalProps {
 
 
 
+export interface Geo {
+  lat: string;
+  lng: string;
+}
+
+export interface Address {
+  street: string;
+  suite: string;
+  city: string;
+  zipcode: string;
+  geo: Geo;
+}
+
+export interface Company {
+  name: string;
+  catchPhrase: string;
+  bs: string;
+}
+
 export interface UserProps {
   id: number;
   name: string;
   username: string;
   email: string;
-  address: {
-    street: string;
-    suite: string;
-    city: string;
-    zipcode: string;
-    geo: {
-      lat: string;
-      lng: string;
-    };
-  };
+  address: Address;
   phone: string;
   website: string;
-  company: {
-    name: string;
-    catchPhrase: string;
-    bs: string;
-  };
+  company: Company;
 }
+
 
 
 export interface UserData {
@@ -53,26 +60,15 @@ export interface UserData {
   name: string;
   username: string;
   email: string;
-  address: {
-    street: string;
-    suite: string;
-    city: string;
-    zipcode: string;
-    geo: {
-      lat: string;
-      lng: string;
-    };
-  };
+  address: Address;
   phone: string;
   website: string;
-  company: {
-    name: string;
-    catchPhrase: string;
-    bs: string;
-  };
+  company: Company;
 }
 
 export interface UserModalProps {
+  user: UserData;
+  setUser: React.Dispatch<React.SetStateAction<UserData>>;
   onClose: () => void;
-  onSubmit: (post: UserProps) => void; // <- exactly as you requested
+  onSubmit: (user: UserData) => void;
 }
